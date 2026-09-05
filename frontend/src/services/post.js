@@ -71,7 +71,7 @@ class PostService {
 
   async getPosts() {
     try {
-      const response = await fetch(`${conf.postApi}/`, {
+      const response = await fetch(`${conf.postApi}`, {
         credentials: "include"
       });
       if (!response.ok) {

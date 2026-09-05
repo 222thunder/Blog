@@ -13,7 +13,7 @@ async function request(url, options = {}) {
 
 // ─── GET /api/post/ ───────────────────────────────────────────────────────────
 async function getPosts() {
-  return request(`${conf.postApi}/`);
+  return request(`${conf.postApi}`);
   // returns: { posts: [ { _id, title, content, photo, author: { _id, email }, createdAt, ... } ] }
 }
 
