@@ -1,6 +1,8 @@
+const baseUrl = ""; // Forced to empty string to use proxy (Vite locally, Vercel in production)
+
 const conf = {
-  apiBaseUrl: import.meta.env.VITE_API_BASE_URL + "/api",
-  postApi: import.meta.env.VITE_API_BASE_URL + "/api/post",
+  apiBaseUrl: baseUrl + "/api",
+  postApi: baseUrl + "/api/post",
 };
 
 export default conf;
