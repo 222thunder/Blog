@@ -69,7 +69,7 @@ export default function PostForm({ post }) {
         {post && post.photo && (
           <div className="w-full h-48 mb-2 rounded-lg overflow-hidden border border-white/10 bg-gray-900">
             <img 
-              src={`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001'}/${post.photo}`}
+              src={post.photo.startsWith('http') ? post.photo : `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001'}/${post.photo}`}
               alt="Current cover" 
               className="w-full h-full object-contain"
             />

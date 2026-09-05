@@ -89,18 +89,24 @@ app.use("/api/post", postRouter);
 app.use(notFound);
 app.use(errorHandler);
 
-// Server Configuration & Database Connection
 const PORT = conf.port || 3001;
 const DB_PATH = conf.mongodbUri;
 
+// Connect to MongoDB
 mongoose
   .connect(DB_PATH)
   .then(() => {
     console.log("Connected to MongoDB successfully");
-    app.listen(PORT, () => {
-      console.log(`Server running at http://localhost:${PORT}`);
-    });
+    // Start server only if we aren't in a serverless environment like Vercel
+    if (process.env.NODE_ENV !== "production") {
+      app.listen(PORT, () => {
+        console.log(`Server running at http://localhost:${PORT}`);
+      });
+    }
   })
   .catch((err) => {
     console.error("Error connecting to MongoDB:", err.message);
   });
+
+// Export the app for Vercel serverless function
+module.exports = app;

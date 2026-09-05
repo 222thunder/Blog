@@ -2,8 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function PostCard({ _id, title, photo, author, createdAt }) {
-  // Use VITE_API_BASE_URL to form absolute image URL if photo is a relative path
-  const imageUrl = photo ? `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001'}/${photo}` : 'https://via.placeholder.com/400x250?text=No+Image';
+  const imageUrl = photo ? (photo.startsWith('http') ? photo : `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001'}/${photo}`) : 'https://via.placeholder.com/400x250?text=No+Image';
   
   return (
     <Link to={`/post/${_id}`} className="block h-full active:scale-[0.98] transition-transform duration-150">

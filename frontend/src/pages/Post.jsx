@@ -35,7 +35,7 @@ export default function Post() {
 
   if (!post) return <div className="py-20 text-center text-gray-400">Loading...</div>;
 
-  const imageUrl = post.photo ? `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001'}/${post.photo}` : 'https://via.placeholder.com/800x400?text=No+Image';
+  const imageUrl = post.photo ? (post.photo.startsWith('http') ? post.photo : `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001'}/${post.photo}`) : 'https://via.placeholder.com/800x400?text=No+Image';
 
   return (
     <div className="py-12">
